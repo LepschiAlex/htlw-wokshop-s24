@@ -1,6 +1,14 @@
-import {config} from 'dotenv';
+import express from 'express';
 import envUtil from './util/env.util';
+import router from "./routes";
 
-envUtil.PORT;
+const app = express();
+app.use(express.json());
 
-console.log(envUtil.PORT);
+app.use("/", router)
+
+
+
+app.listen(envUtil.PORT,() => {
+    console.log('Server up and running');
+});
