@@ -16,3 +16,18 @@ export async function createUser(
 
     
 }
+
+export async function getUser(
+    id: string
+){
+    try{
+            const user = await UserModel.findById(id);
+            if (!user){
+                throw new Error(`Could not find user with id ${id}`);
+            }
+            return user;
+    } catch(e){
+        console.error(`{User Service | Get User} - Error getting user ${id}`);
+        throw e;
+    }
+}
