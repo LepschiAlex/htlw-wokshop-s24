@@ -1,0 +1,18 @@
+import { User, UserModel } from "../model/user.model"
+
+export async function createUser(
+    user: User
+){
+    try{
+        const userDocument = await UserModel.create(user);
+
+        console.log("{User Service | Create User} - Successfully create user with id: " + userDocument._id);
+
+        return userDocument;
+    } catch(e){
+        console.error(e);
+        throw e;
+    }
+
+    
+}
